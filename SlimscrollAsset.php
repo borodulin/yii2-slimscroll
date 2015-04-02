@@ -1,8 +1,8 @@
 <?php
 /**
- * @link https://github.com/borodulin/jvectormap
+ * @link https://github.com/borodulin/yii2-slimscroll
  * @copyright Copyright (c) 2015 Andrey Borodulin
- * @license https://github.com/borodulin/jvectormap/blob/master/LICENSE.md
+ * @license https://github.com/borodulin/jvectormap/blob/master/LICENSE
  */
 namespace conquer\slimscroll;
 
