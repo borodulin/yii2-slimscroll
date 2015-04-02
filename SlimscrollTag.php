@@ -7,7 +7,6 @@
 namespace conquer\slimscroll;
 
 use yii\helpers\Html;
-use yii\base\InvalidCallException;
 use yii\helpers\Json;
 
 class SlimscrollTag extends \yii\base\Component
