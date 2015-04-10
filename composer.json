@@ -1,6 +1,6 @@
 {
     "name": "conquer/slimscroll",
-    "description": "Conquer slimscroll widget",
+    "description": "Yii2 slimscroll widget",
     "keywords": ["yii2", "extension", "widget", "slimscroll"],
     "homepage": "https://github.com/borodulin/yii2-slimscroll",
     "type": "yii2-extension",
