@@ -7,7 +7,7 @@
 namespace conquer\slimscroll;
 
 use yii\helpers\Html;
-use conquer\helpers\Json;
+use yii\helpers\Json;
 
 class SlimscrollWidget extends \yii\base\Widget
 {
