@@ -26,13 +26,13 @@ to the ```require``` section of your `composer.json` file.
 ## Usage
 
 ```php
-use conquer\slimscroll\SlimscrollTag;
+use conquer\slimscroll\SlimscrollWidget;
 
-<?= SlimscrollTag::beginTag(); ?>
+<?php SlimscrollWidget::begin(); ?>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus, felis interdum condimentum consectetur, nisl libero elementum eros, vehicula congue lacus eros non diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo. Cras sit amet erat sit amet lacus egestas placerat. Aenean ultricies ultrices mauris ac congue
 </p>
-<?= SlimscrollTag::endTag(); ?>
+<?php SlimscrollTag::end(); ?>
 
 ```
 
