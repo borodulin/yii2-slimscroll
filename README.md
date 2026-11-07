@@ -2,12 +2,13 @@
 
 [![Latest Version](https://img.shields.io/packagist/v/conquer/slimscroll.svg)](https://packagist.org/packages/conquer/slimscroll)
 [![Total Downloads](https://img.shields.io/packagist/dt/conquer/slimscroll.svg)](https://packagist.org/packages/conquer/slimscroll)
+[![CI](https://github.com/borodulin/yii2-slimscroll/actions/workflows/ci.yml/badge.svg)](https://github.com/borodulin/yii2-slimscroll/actions/workflows/ci.yml)
 [![License](https://img.shields.io/packagist/l/conquer/slimscroll.svg)](LICENSE)
 
 ## Description
 
 SlimScroll is a small (4.6KB) jQuery plugin that transforms any div into a scrollable area with a nice scrollbar - similar to the one Facebook and Google started using in their products recently. slimScroll doesn't occupy any visual space as it only appears on a user initiated mouse-over. User can drag the scrollbar or use mouse-wheel to change the scroll value.
-For more information please visit [SlimScroll](http://rocha.la/jQuery-slimScroll) 
+For more information please visit [SlimScroll](https://github.com/rochal/jQuery-slimScroll).
 
 ## Requirements
 
@@ -26,15 +27,27 @@ composer require conquer/slimscroll:^2.1
 ## Usage
 
 ```php
+<?php
 use conquer\slimscroll\SlimscrollWidget;
+?>
 
-<?php SlimscrollWidget::begin(); ?>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus, felis interdum condimentum consectetur, nisl libero elementum eros, vehicula congue lacus eros non diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus mauris lorem, lacinia id tempus non, imperdiet et leo. Cras sit amet erat sit amet lacus egestas placerat. Aenean ultricies ultrices mauris ac congue
-</p>
+<?php SlimscrollWidget::begin([
+    // slimScroll options: https://github.com/rochal/jQuery-slimScroll#options
+    'options' => [
+        'height' => '250px',
+        'color' => '#00f',
+        'alwaysVisible' => true,
+    ],
+    // attributes of the container
+    'htmlOptions' => ['class' => 'news'],
+    'tag' => 'div',
+]); ?>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
 <?php SlimscrollWidget::end(); ?>
-
 ```
+
+> The jQuery slimScroll plugin is no longer developed (last release 1.3.8, 2016). It works with jQuery 3,
+> which Yii 2 uses, but relies on `.bind()` / `.unbind()`, removed in jQuery 4.
 
 ## License
 

@@ -1,6 +1,6 @@
 {
     "name": "conquer/slimscroll",
-    "description": "Yii2 slimscroll widget",
+    "description": "jQuery slimScroll widget for Yii2",
     "keywords": [
         "yii2",
         "extension",
@@ -27,9 +27,28 @@
         "yiisoft/yii2": "^2.0",
         "bower-asset/slimscroll": "~1.3.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
     "autoload": {
         "psr-4": {
             "conquer\\slimscroll\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "conquer\\slimscroll\\tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
         }
     }
 }

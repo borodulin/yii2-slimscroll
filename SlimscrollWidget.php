@@ -2,52 +2,71 @@
 /**
  * @link https://github.com/borodulin/yii2-slimscroll
  * @copyright Copyright (c) 2015 Andrey Borodulin
- * @license https://github.com/borodulin/jvectormap/blob/master/LICENSE
+ * @license https://github.com/borodulin/yii2-slimscroll/blob/master/LICENSE
  */
+
 namespace conquer\slimscroll;
 
+use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
-class SlimscrollWidget extends \yii\base\Widget
+/**
+ * Wraps the content between begin() and end() into a slimScroll area.
+ *
+ * ```php
+ * <?php SlimscrollWidget::begin(['options' => ['height' => '200px']]); ?>
+ * ...
+ * <?php SlimscrollWidget::end(); ?>
+ * ```
+ *
+ * @author Andrey Borodulin
+ */
+class SlimscrollWidget extends Widget
 {
-	/**
-	 * SlimScroll options
-	 * @link http://rocha.la/jQuery-slimScroll 
-	 * @var array()
-	 */
-	public $options;
-	
-	/**
-	 * Tag Html attributes
-	 * @var array()
-	 */
-	public $htmlOptions;
-	
-	/**
-	 * Tag
-	 * @var string
-	 */
-	public $tag='div';
+    /**
+     * slimScroll options, e.g. `['height' => '200px', 'color' => '#00f', 'alwaysVisible' => true]`
+     * @link https://github.com/rochal/jQuery-slimScroll#options
+     * @var array
+     */
+    public $options = [];
 
-	public function init()
-	{
-	    if (!isset($this->htmlOptions['id'])) {
-	        $this->htmlOptions['id'] = $this->getId();
-	    }
-	    echo Html::beginTag($this->tag, $this->htmlOptions);
-	}
-	
-	public function run()
-	{
-	    $view = $this->getView();
-	    
-	    SlimscrollAsset::register($view);
-	    
-	    $options = Json::encode($this->options);
-	    
-	    $view->registerJs("jQuery('#{$this->htmlOptions['id']}').slimScroll($options);");
-	    
-	    echo Html::endTag($this->tag);
-	}
+    /**
+     * HTML attributes of the container tag
+     * @var array
+     */
+    public $htmlOptions = [];
+
+    /**
+     * Container tag
+     * @var string
+     */
+    public $tag = 'div';
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        if (!isset($this->htmlOptions['id'])) {
+            $this->htmlOptions['id'] = $this->getId();
+        }
+        echo Html::beginTag($this->tag, $this->htmlOptions);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        $view = $this->getView();
+        SlimscrollAsset::register($view);
+
+        $id = Json::htmlEncode((string)$this->htmlOptions['id']);
+        $options = empty($this->options) ? '{}' : Json::htmlEncode($this->options);
+        $view->registerJs("jQuery(document.getElementById($id)).slimScroll($options);");
+
+        return Html::endTag($this->tag);
+    }
 }
